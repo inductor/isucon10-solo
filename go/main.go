@@ -297,6 +297,20 @@ func main() {
 	db.SetMaxOpenConns(100)
 	defer db.Close()
 
+	estateDB, err = estateDBConnectionData.ConnectDB()
+	if err != nil {
+		e.Logger.Fatalf("read only DB connection failed : %v", err)
+	}
+	estateDB.SetMaxOpenConns(100)
+	defer estateDB.Close()
+
+	chairDB, err = chairDBConnectionData.ConnectDB()
+	if err != nil {
+		e.Logger.Fatalf("read only DB connection failed : %v", err)
+	}
+	chairDB.SetMaxOpenConns(100)
+	defer chairDB.Close()
+
 	// Start server
 	serverPort := fmt.Sprintf(":%v", getEnv("SERVER_PORT", "1323"))
 	e.Logger.Fatal(e.Start(serverPort))
