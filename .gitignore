@@ -1,0 +1,15 @@
+public/*
+fixture/*
+!fixture/.gitkeep
+deno/
+docker-compose/
+fixture/
+frontend/
+nginx/
+nodejs/
+perl/
+php/
+python/
+ruby/
+rust/
+
