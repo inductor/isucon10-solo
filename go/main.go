@@ -251,6 +251,10 @@ func main() {
 		newrelic.ConfigLicense(os.Getenv("NEW_RELIC_LICENSE_KEY")),
 		newrelic.ConfigDistributedTracerEnabled(true),
 		newrelic.ConfigDebugLogger(os.Stdout),
+		func(config *newrelic.Config) {
+			config.DatastoreTracer.SlowQuery.Enabled = true
+			config.DatastoreTracer.SlowQuery.Threshold = 0
+		},
 	)
 	if err != nil {
 		log.Fatal(err)
