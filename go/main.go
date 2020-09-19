@@ -876,7 +876,7 @@ func searchRecommendedEstateWithChair(c echo.Context) error {
 	h := chair.Height
 	d := chair.Depth
 	query = `SELECT * FROM estate WHERE (door_width >= ? AND door_height >= ?) OR (door_width >= ? AND door_height >= ?) OR (door_width >= ? AND door_height >= ?) OR (door_width >= ? AND door_height >= ?) OR (door_width >= ? AND door_height >= ?) OR (door_width >= ? AND door_height >= ?) ORDER BY popularity DESC, id ASC LIMIT ?`
-	err = chairDB.Select(&estates, query, w, h, w, d, h, w, h, d, d, w, d, h, Limit)
+	err = estateDB.Select(&estates, query, w, h, w, d, h, w, h, d, d, w, d, h, Limit)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return c.JSON(http.StatusOK, EstateListResponse{[]Estate{}})
