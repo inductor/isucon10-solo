@@ -16,7 +16,8 @@ CREATE TABLE isuumo.estate
     door_height INTEGER             NOT NULL,
     door_width  INTEGER             NOT NULL,
     features    VARCHAR(64)         NOT NULL,
-    popularity  INTEGER             NOT NULL
+    popularity  INTEGER             NOT NULL,
+    popularity_desc INTEGER AS (-popularity) NOT NULL
 );
 
-create index estate_idx on isuumo.estate (rent);
+ALTER TABLE estate ADD INDEX estate_popularity_id_idx(popularity_desc, id);

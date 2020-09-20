@@ -17,7 +17,8 @@ CREATE TABLE isuumo.chair
     features    VARCHAR(64)     NOT NULL,
     kind        VARCHAR(64)     NOT NULL,
     popularity  INTEGER         NOT NULL,
+    popularity_desc INTEGER AS (-popularity) NOT NULL,
     stock       INTEGER         NOT NULL
 );
 
-create index chair_idx on isuumo.chair (price);
+ALTER TABLE chair ADD INDEX chair_popularity_id_idx(popularity_desc, id);
