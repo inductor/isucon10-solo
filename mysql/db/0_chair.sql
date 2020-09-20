@@ -20,5 +20,3 @@ CREATE TABLE isuumo.chair
     popularity_desc INTEGER AS (-popularity) NOT NULL,
     stock       INTEGER         NOT NULL
 );
-
-ALTER TABLE chair ADD INDEX chair_popularity_id_idx(popularity_desc, id);
